@@ -16,6 +16,24 @@
             android:orientation="vertical">
 
             <EditText
+                android:id="@+id/Dfile_id"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Directory ID"/>
+
+            <EditText
+                android:id="@+id/Dfile_name"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Directory Name"/>
+
+            <EditText
+                android:id="@+id/Dfile_space"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="Directory Space"
+                android:inputType="numberDecimal"/>
+            <EditText
                 android:id="@+id/file_id"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

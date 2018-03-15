@@ -13,6 +13,20 @@ public class DataBaseCentre extends SQLiteOpenHelper {
     public static final String DATABASE_NAME ="FILEMANAGEMENT.db";
     public static final String TABLE_NAME ="FILES";
 
+    //Directory Schema
+    public static final String D_Name="DirectoryName";
+    public static final String D_Id="DID";
+    public static final String D_Size= "DBSize";
+    public static final String D_Parent = "DirectoryParent";
+
+
+    //FIle CHunk schema
+    public static final String FILE_CHUNK = "FileChunk";
+    public static final Integer FileC_Size =1;
+    public static final Integer FileC_ID =1;
+    public static final String FileC_Parent="Parent";
+
+
     public static final String ID ="ID";
     public static final String FILENAME ="FILENAME";
     public static final String DIRECTORYSPACE ="DIRECTORYSPACE";
@@ -28,7 +42,6 @@ public class DataBaseCentre extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table "+TABLE_NAME+" (ID VARCHAR(100) PRIMARY KEY,FILENAME VARCHAR(100),DIRECTORYSPACE VARCHAR(100))");
-
     }
 
     @Override
@@ -37,12 +50,15 @@ public class DataBaseCentre extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean insertData(String id, String filename, String space){
+    public boolean insertData(String id, String filename, String space,String did, String dname, String dsize){
         SQLiteDatabase db= this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(ID,id);
         contentValues.put(FILENAME,filename);
         contentValues.put(DIRECTORYSPACE,space);
+        contentValues.put(D_Name,dname);
+        contentValues.put(D_Id,did);
+        contentValues.put(D_Size,dsize);
 
         long result= db.insert(TABLE_NAME,null,contentValues);
         if(result ==-1){
